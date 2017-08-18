@@ -2,11 +2,6 @@
   text-align: center;
 }
 
-.MemberListItem {
-  max-width: 25%;
-}
-
 .test-right {
   width: 65%;
-  float:right;
 }

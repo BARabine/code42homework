@@ -3,6 +3,7 @@ import { List, ListItem } from 'material-ui/List';
 import Avatar from 'material-ui/Avatar';
 import { Table, TableBody, TableRow, TableRowColumn } from 'material-ui/Table';
 import './App.css';
+import MemberDetails from './MemberDetails';
 
 
 class MemberList extends Component {
@@ -10,10 +11,12 @@ class MemberList extends Component {
     super(props);
     this.state = {
       members: props.memberData,
+      selected: null,
     }
   }
 
   selectUser = userId => () => {
+    this.setState({ members: this.state.members, selected: {userId} })
     alert(`>>> Selected userId = ${userId}`);
 
   };
@@ -28,22 +31,21 @@ class MemberList extends Component {
         id={`btn-${user.userId}`}
         key={user.userId}
         onClick={this.selectUser(user.userId)}
-        className='MemberListItem'
       >
       </ListItem>
     ));
 
     return (
-      <Table selectable='false'>
-        <TableBody displayRowCheckbox='false' >
-          <TableRow selectable='false'>
+      <Table>
+        <TableBody displayRowCheckbox={false} >
+          <TableRow>
             <TableRowColumn>
               <List>
                 {memberList}
               </List>
             </TableRowColumn>
             <TableRowColumn>
-              <div className='test-right'>Just Testing</div>
+              <MemberDetails memberData={this.state.members} userId={this.state.selected} />
             </TableRowColumn>
           </TableRow>
         </TableBody>
