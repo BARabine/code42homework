@@ -1,6 +1,7 @@
 import React, { Component } from 'react';
 import { List, ListItem } from 'material-ui/List';
 import Avatar from 'material-ui/Avatar';
+import { Table, TableBody, TableRow, TableRowColumn } from 'material-ui/Table';
 import './App.css';
 
 
@@ -26,14 +27,27 @@ class MemberList extends Component {
         leftAvatar={<Avatar src={user.imageUrl} />}
         id={`btn-${user.userId}`}
         key={user.userId}
-        onClick={this.selectUser(user.userId)}>
+        onClick={this.selectUser(user.userId)}
+        className='MemberListItem'
+      >
       </ListItem>
     ));
 
     return (
-      <List>
-        {memberList}
-      </List>
+      <Table selectable='false'>
+        <TableBody displayRowCheckbox='false' >
+          <TableRow selectable='false'>
+            <TableRowColumn>
+              <List>
+                {memberList}
+              </List>
+            </TableRowColumn>
+            <TableRowColumn>
+              <div className='test-right'>Just Testing</div>
+            </TableRowColumn>
+          </TableRow>
+        </TableBody>
+      </Table>
     );
   }
 }

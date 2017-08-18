@@ -3,6 +3,10 @@
 }
 
 .MemberListItem {
-  text-align: left;
-  max-width: 325px;
+  max-width: 25%;
+}
+
+.test-right {
+  width: 65%;
+  float:right;
 }
