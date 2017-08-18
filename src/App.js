@@ -3,6 +3,7 @@ import './App.css';
 import Loader from 'react-loader';
 import MemberList from './MemberList';
 import { getAllMembers } from './MemberUtils';
+import MuiThemeProvider from 'material-ui/styles/MuiThemeProvider';
 
 class App extends Component {
 
@@ -26,7 +27,9 @@ class App extends Component {
       <div>
         <h2>Code42 Homework Exercise</h2>
         <Loader loaded={this.state.loaded}>
-          <MemberList memberData={this.state.data} />
+          <MuiThemeProvider>
+            <MemberList memberData={this.state.data} />
+          </MuiThemeProvider>
         </Loader>
       </div>
     )

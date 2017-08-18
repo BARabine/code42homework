@@ -1,5 +1,6 @@
 import React, { Component } from 'react';
-import { ListGroup, ListGroupItem } from 'react-bootstrap';
+import { List, ListItem } from 'material-ui/List';
+import Avatar from 'material-ui/Avatar';
 import './App.css';
 
 
@@ -19,22 +20,20 @@ class MemberList extends Component {
   render() {
     const members = this.state.members;
     const memberList = members.map(user => (
-      <ListGroupItem
+      <ListItem
+        primaryText={user.name}
+        secondaryText={user.userId}
+        leftAvatar={<Avatar src={user.imageUrl} />}
         id={`btn-${user.userId}`}
         key={user.userId}
-        className="MemberListItem"
-        header={user.name}
-        bsStyle='link'
         onClick={this.selectUser(user.userId)}>
-        ({user.userId})
-        {/* <h4>{user.name} <span>({user.userId})</span></h4> */}
-      </ListGroupItem>
+      </ListItem>
     ));
 
     return (
-      <ListGroup>
+      <List>
         {memberList}
-      </ListGroup>
+      </List>
     );
   }
 }
