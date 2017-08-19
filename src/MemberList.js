@@ -31,14 +31,13 @@ class MemberList extends Component {
         id={`btn-${user.userId}`}
         key={user.userId}
         onClick={this.selectUser(user.userId)}
-      >
-      </ListItem>
+      />
     ));
 
     return (
       <Table>
         <TableBody displayRowCheckbox={false} >
-          <TableRow>
+          <TableRow selectable={false}>
             <TableRowColumn>
               <List>
                 {memberList}
