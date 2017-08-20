@@ -33,7 +33,8 @@ class App extends Component {
             <Switch>
               <Route path='/' exact
                 render={() => (<MemberList memberData={this.state.data} />)} />
-              <Route path="/members" component={MemberDetails} />
+              <Route path="/memberDetails/:userid" component={MemberDetails} />
+              <Route path="/memberDetails" component={MemberDetails} />
               <Route path="/404" component={NotFound} />
               <Route path="*" component={NotFound} />
             </Switch>

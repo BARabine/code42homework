@@ -4,6 +4,7 @@ import Avatar from 'material-ui/Avatar';
 import { Table, TableBody, TableRow, TableRowColumn } from 'material-ui/Table';
 import './App.css';
 import MemberDetails from './MemberDetails';
+import { Route } from 'react-router-dom';
 
 
 class MemberList extends Component {
@@ -11,13 +12,20 @@ class MemberList extends Component {
     super(props);
     this.state = {
       members: props.memberData,
-      selected: null,
     }
   }
 
   selectUser = userId => () => {
-    this.setState({ members: this.state.members, selected: {userId} })
-    alert(`>>> Selected userId = ${userId}`);
+    // this.setState({ members: this.state.members, selected: {userId} })
+    console.log(`>>> Selected userId = ${userId}`);
+    // Get the data object for the selected user
+    let userData = this.state.members.filter((data) => {
+      return data.userId === userId;
+    })[0];
+    console.log(`>>>> UserData = ${JSON.stringify(userData)}`);
+    const MemberDetailPage = props => <MemberDetails members={userData} {...props} />;
+    <Route path='/memberDetails/:userId'
+      render={() => (MemberDetailPage)} />
 
   };
 
@@ -36,7 +44,7 @@ class MemberList extends Component {
 
     return (
       <Table>
-        <TableBody displayRowCheckbox={false} >
+        <TableBody displayRowCheckbox={false} style={{verticalAlign: 'top'}}>
           <TableRow selectable={false}>
             <TableRowColumn>
               <List>
@@ -54,32 +62,3 @@ class MemberList extends Component {
 }
 
 export default MemberList;
-
-
-// class MemberList extends Component {
-//   selectMember = handle => () => {
-//     this.props.history.push({ pathname: `/members/${handle}` });
-//   };
-//
-//   render() {
-//     const { members } = this.props;
-//
-//     const items = members.map(member =>
-//       (<ListItem key={member.handle} onClick={this.selectMember(member.handle)} button>
-//         <Avatar>
-//           <img src={member.imageUrl} alt="Member Avatar" width={40} height={40} />
-//         </Avatar>
-//         <ListItemText primary={member.name} secondary={member.handle} />
-//       </ListItem>),
-//     );
-//
-//     if (members && members.length) {
-//       return (
-//         <List>
-//           {items}
-//         </List>
-//       );
-//     }
-//     return null;
-//   }
-// }
