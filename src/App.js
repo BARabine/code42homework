@@ -44,37 +44,27 @@ class App extends Component {
       selected_user = <NoneSelected />;
     }
 
-        return (
-        <div>
-          <h2>Code42 Homework Exercise</h2>
-          <Loader loaded={this.state.loaded}>
-            <MuiThemeProvider>
-              {/* <Switch>
-                <Route path='/' exact
-                render={() => (<MemberList memberData={this.state.data} />)} />
-                <Route path="/memberDetails/:userid" component={MemberDetails} />
-                <Route path="/memberDetails" component={MemberDetails} />
-                <Route path="/404" component={NotFound} />
-                <Route path="*" component={NotFound} />
-              </Switch> */}
+    return (
+      <div>
+        <h2>Code42 Homework Exercise</h2>
+        <Loader loaded={this.state.loaded}>
+          <MuiThemeProvider>
 
-              <Table>
-                <TableBody displayRowCheckbox={false} style={{verticalAlign: 'top'}}>
-                  <TableRow selectable={false}>
-                    <TableRowColumn>
-                      <MemberList
-                        members={this.state.data}
-                        onSelectUser={this.handleSelectUser}
-                      />
-                    </TableRowColumn>
-                    <TableRowColumn>
-                      {selected_user}
+            <Table>
+              <TableBody displayRowCheckbox={false} style={{verticalAlign: 'top'}}>
+                <TableRow selectable={false}>
+                  <TableRowColumn>
+                    <MemberList
+                      members={this.state.data}
+                      onSelectUser={this.handleSelectUser}
+                    />
+                  </TableRowColumn>
+                  <TableRowColumn>
+                    {selected_user}
                   </TableRowColumn>
                 </TableRow>
               </TableBody>
             </Table>
-
-
 
           </MuiThemeProvider>
         </Loader>
