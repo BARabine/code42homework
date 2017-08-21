@@ -25,7 +25,7 @@ class MemberDetails extends Component {
         </CardMedia>
         <CardText>
           <dl>
-            <dt>Location:</dt>
+            <dt>Public Location:</dt>
             <dd>{data.location ? data.location : 'N/A'}</dd>
             <dt>Public Email:</dt>
             <dd>{data.email ? data.email : 'N/A'}</dd>
